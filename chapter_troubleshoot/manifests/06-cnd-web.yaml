@@ -5,7 +5,8 @@ metadata:
   namespace: troubleshoot
 type: Opaque
 data:
-  DB_PASSWORD: <base64-encoded-password> # Replace with actual base64 encoded password
+  # DB_PASSWORD: <base64-encoded-password> # Replace with actual base64 encoded password
+  DB_PASSWORD: cGFzc3dvcmQK
 ---
 apiVersion: v1
 kind: Pod
