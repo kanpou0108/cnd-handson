@@ -9,7 +9,7 @@ configs:
           fileName: "helmfile.yaml"
         init:
           command: [sh, -c]
-          args: 
+          args:
             - |
               echo "Initializing..."
               helmfile deps
@@ -19,8 +19,8 @@ configs:
             - |
               helmfile template --include-crds --skip-deps || exit 1
 
-repoServer: 
-  extraContainers: 
+repoServer:
+  extraContainers:
     - name: helmfile-cmp
       command: [/var/run/argocd/argocd-cmp-server]
       image: ghcr.io/helmfile/helmfile:latest
@@ -54,3 +54,9 @@ repoServer:
 service:
   extensions:
     enabled: true
+    # ~~~~ ここから下を追記or更新 ~~~~
+    extensionList:
+      - name: rollout-extension
+        env:
+          - name: EXTENSION_URL
+            value: https://github.com/argoproj-labs/rollout-extension/releases/download/v0.3.7/extension.tar
